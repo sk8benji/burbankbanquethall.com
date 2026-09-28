@@ -1,0 +1,388 @@
+---
+import { venueConfig } from '../data/venue-data';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Weddings', href: '/weddings' },
+  { name: 'Birthday Parties', href: '/birthday-parties' },
+  { name: 'Quinceañeras', href: '/quinceaneras' },
+  { name: 'Sweet 16', href: '/sweet-sixteen' },
+  { name: 'Our Spaces', href: '/#ballrooms' },
+  { name: 'Why Us', href: '/#why-us' },
+  { name: 'Reviews', href: '/#reviews' },
+  { name: 'FAQ', href: '/#faqs' }
+];
+---
+
+<header class="avana-luxury-header" id="luxury-header">
+  <div class="header-container">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-logo" aria-label="Burbank Banquet Hall Home">
+      <div class="logo-mark">
+        <span class="logo-title">BURBANK</span>
+        <span class="logo-subtitle">BANQUET HALL</span>
+        <span class="logo-location">EST. BURBANK, CA</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <li class="nav-item">
+              <a href={link.href} class={`nav-link ${isActive ? 'active' : ''}`}>
+                {link.name}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <!-- Header Actions (CTA + Mobile Trigger) -->
+    <div class="header-actions">
+      <a href="#availability-modal" class="btn btn-primary header-cta open-modal-trigger">
+        <span>Pricing & Availability</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <span class="drawer-logo">BURBANK BANQUET HALL</span>
+      <button class="drawer-close" id="drawer-close-btn" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="drawer-list">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="drawer-link">
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="drawer-footer">
+      <a href="#availability-modal" class="btn btn-gold drawer-cta open-modal-trigger">
+        Check Pricing & Availability
+      </a>
+      <a href={`tel:${venueConfig.phoneRaw}`} class="drawer-phone">
+        📞 Call: {venueConfig.phone}
+      </a>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+</header>
+
+<style>
+  .avana-luxury-header {
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    transition: box-shadow 0.25s ease;
+  }
+
+  .avana-luxury-header.is-scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    min-height: var(--header-height);
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  /* Logo Mark */
+  .brand-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+  }
+
+  .logo-title {
+    font-family: var(--font-accent);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    letter-spacing: 0.22em;
+    line-height: 1;
+  }
+
+  .logo-subtitle {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 0.35em;
+    margin-top: 3px;
+    line-height: 1;
+  }
+
+  .logo-location {
+    font-family: var(--font-accent);
+    font-size: 0.55rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.25em;
+    margin-top: 3px;
+  }
+
+  /* Desktop Nav */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #424242;
+    position: relative;
+    padding: 0.4rem 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1.5px;
+    background-color: var(--color-gold);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--color-text-dark);
+  }
+
+  .nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-cta {
+    font-size: 0.75rem;
+    padding: 0.75rem 1.6rem;
+    white-space: nowrap;
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-drawer.is-open {
+    right: 0;
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .drawer-logo {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dark);
+  }
+
+  .drawer-close {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--color-text-dark);
+  }
+
+  .drawer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .drawer-link {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+    display: block;
+    padding: 0.25rem 0;
+  }
+
+  .drawer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .drawer-cta {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .drawer-phone {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .drawer-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 1100px) {
+    .desktop-nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .header-cta {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const header = document.getElementById('luxury-header');
+    const toggleBtn = document.getElementById('mobile-toggle-btn');
+    const closeBtn = document.getElementById('drawer-close-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+
+    // Scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header?.classList.add('is-scrolled');
+      } else {
+        header?.classList.remove('is-scrolled');
+      }
+    });
+
+    // Drawer toggle
+    function openDrawer() {
+      drawer?.classList.add('is-open');
+      backdrop?.classList.add('is-open');
+      toggleBtn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer?.classList.remove('is-open');
+      backdrop?.classList.remove('is-open');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    toggleBtn?.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+    drawerLinks.forEach(l => l.addEventListener('click', closeDrawer));
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>

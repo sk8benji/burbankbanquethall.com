@@ -1,0 +1,120 @@
+---
+import '../styles/avana-theme.css';
+import TopAnnouncementBar from '../components/TopAnnouncementBar.astro';
+import LuxuryHeader from '../components/LuxuryHeader.astro';
+import LuxuryFooter from '../components/LuxuryFooter.astro';
+import AvailabilityModal from '../components/AvailabilityModal.astro';
+import { venueConfig } from '../data/venue-data';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  schemaType?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Banquet Hall in Burbank CA | Luxury Wedding & Event Venue",
+  description = "Host your luxury wedding, quinceañera, birthday party or private gala at Burbank Banquet Hall. Two stunning ballrooms in Burbank, in-house catering and all-inclusive packages.",
+  canonical = Astro.url.href,
+  ogImage = "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80"
+} = Astro.props;
+
+// Schema JSON-LD siguiendo las directrices de AGENTES IA
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "@id": "https://burbankbanquethall.com/#venue",
+  "name": venueConfig.name,
+  "description": description,
+  "url": "https://burbankbanquethall.com",
+  "telephone": venueConfig.phone,
+  "email": venueConfig.email,
+  "priceRange": "$$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": venueConfig.address.street,
+    "addressLocality": venueConfig.address.city,
+    "addressRegion": venueConfig.address.state,
+    "postalCode": venueConfig.address.zip,
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 34.1808,
+    "longitude": -118.3090
+  },
+  "areaServed": venueConfig.serviceAreas.map(city => ({
+    "@type": "City",
+    "name": city
+  })),
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": venueConfig.ratings.score,
+    "reviewCount": venueConfig.ratings.reviewCount
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "22:00"
+    }
+  ],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "In-House Gourmet Catering", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Two Indoor Ballrooms", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Rooftop Sky Lounge", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Dedicated Event Coordinator", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Private VIP Bridal Suite", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "On-Site Guest Parking", "value": true }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={venueConfig.name} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Preconnect Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <TopAnnouncementBar />
+    <LuxuryHeader />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <LuxuryFooter />
+    <AvailabilityModal />
+  </body>
+</html>

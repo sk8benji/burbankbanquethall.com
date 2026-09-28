@@ -1,0 +1,116 @@
+---
+import { venueConfig } from '../data/venue-data';
+---
+
+<section class="cta-banner-section">
+  <div class="container text-center">
+    <span class="banner-eyebrow">YOUR DREAM EVENT STARTS HERE</span>
+    <h2 class="banner-heading">Reserve Burbank's Most Elegant Celebration Space</h2>
+    <p class="banner-subtext">
+      Dates for weddings, quinceañeras, and weekend celebrations fill up quickly. Check date availability and request your free private tour today.
+    </p>
+
+    <div class="banner-btn-group">
+      <a href="#availability-modal" class="btn btn-gold banner-cta open-modal-trigger">
+        <span>Check Pricing & Availability</span>
+      </a>
+      <a href={`tel:${venueConfig.phoneRaw}`} class="btn btn-outline-white">
+        <span>Call or Text: {venueConfig.phone}</span>
+      </a>
+    </div>
+
+    <div class="banner-guarantee">
+      <span>✦ Same-Day Response Guaranteed</span>
+      <span class="sep">·</span>
+      <span>✦ No Obligation Consultation</span>
+      <span class="sep">·</span>
+      <span>✦ Complimentary Walkthrough</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner-section {
+    background-color: var(--color-bg-dark);
+    padding: clamp(4rem, 7vw, 6rem) 1.5rem;
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .banner-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .banner-heading {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .banner-subtext {
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    color: rgba(245, 240, 231, 0.85);
+    max-width: 640px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+  }
+
+  .banner-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.25rem;
+  }
+
+  .banner-guarantee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    opacity: 0.9;
+  }
+
+  .sep {
+    opacity: 0.4;
+  }
+
+  @media (max-width: 600px) {
+    .banner-btn-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .banner-btn-group .btn {
+      width: 100%;
+    }
+    .banner-guarantee {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .sep {
+      display: none;
+    }
+  }
+</style>

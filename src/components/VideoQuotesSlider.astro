@@ -1,0 +1,186 @@
+---
+import { quotes } from '../data/venue-data';
+---
+
+<section class="quotes-section section-padding" id="reviews">
+  <div class="container-narrow">
+    <div class="quotes-wrapper">
+      <div class="quote-ornament">“</div>
+
+      <!-- Quotes Carousel / Showcase -->
+      <div class="quotes-slider" id="quotes-slider">
+        {quotes.map((item, index) => (
+          <div class={`quote-slide ${index === 0 ? 'is-active' : ''}`} data-index={index}>
+            <blockquote class="quote-text">
+              {item.quote}
+            </blockquote>
+            <div class="quote-meta">
+              <span class="quote-author">{item.author}</span>
+              <span class="quote-separator">·</span>
+              <span class="quote-event">{item.event} in Burbank</span>
+              <div class="quote-stars">★★★★★</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Carousel Dots -->
+      <div class="slider-dots">
+        {quotes.map((_, index) => (
+          <button 
+            class={`slider-dot ${index === 0 ? 'is-active' : ''}`} 
+            data-target={index} 
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quotes-section {
+    background-color: var(--color-bg-linen);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .quotes-wrapper {
+    position: relative;
+    padding: 1.5rem 0;
+  }
+
+  .quote-ornament {
+    font-family: var(--font-editorial);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-gold);
+    opacity: 0.7;
+    margin-bottom: -1.5rem;
+  }
+
+  .quotes-slider {
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .quote-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 880px;
+  }
+
+  .quote-slide.is-active {
+    display: block;
+    opacity: 1;
+  }
+
+  .quote-text {
+    font-family: var(--font-editorial);
+    font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+    font-style: italic;
+    color: var(--color-text-dark);
+    line-height: 1.4;
+    margin-bottom: 1.75rem;
+    font-weight: 400;
+  }
+
+  .quote-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    font-family: var(--font-accent);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .quote-author {
+    font-weight: 700;
+    color: var(--color-text-dark);
+  }
+
+  .quote-separator {
+    color: var(--color-gold);
+  }
+
+  .quote-event {
+    color: var(--color-text-muted);
+  }
+
+  .quote-stars {
+    color: var(--color-gold);
+    letter-spacing: 0.15em;
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .slider-dot.is-active {
+    background-color: var(--color-gold);
+    transform: scale(1.3);
+  }
+</style>
+
+<script>
+  function initQuotesSlider() {
+    const slides = document.querySelectorAll('.quote-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentIndex = 0;
+    let autoInterval: any;
+
+    function showSlide(index: number) {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('is-active', idx === index);
+      });
+      dots.forEach((d, idx) => {
+        d.classList.toggle('is-active', idx === index);
+      });
+      currentIndex = index;
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        showSlide(idx);
+        resetAuto();
+      });
+    });
+
+    function nextSlide() {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    function resetAuto() {
+      clearInterval(autoInterval);
+      autoInterval = setInterval(nextSlide, 6500);
+    }
+
+    if (slides.length > 1) {
+      autoInterval = setInterval(nextSlide, 6500);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initQuotesSlider);
+</script>

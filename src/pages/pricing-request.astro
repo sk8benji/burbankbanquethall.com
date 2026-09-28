@@ -1,0 +1,253 @@
+---
+import AvanaLayout from '../layouts/AvanaLayout.astro';
+import { venueConfig } from '../data/venue-data';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = "Check Pricing & Availability | Burbank Banquet Hall";
+const description = "Check date availability and request custom pricing for weddings, quinceañeras, and private celebrations in Burbank, CA. Same-day response guaranteed.";
+---
+
+<AvanaLayout title={title} description={description}>
+  <section class="pricing-hero">
+    <div class="container text-center">
+      <span class="eyebrow">DATES FOR 2026 & 2027 ARE FILLING RAPIDLY</span>
+      <h1 class="pricing-title">Check Availability & Request Pricing</h1>
+      <p class="pricing-subtitle mx-auto">
+        Tell us about your upcoming celebration. A dedicated Burbank event coordinator will review your request and send customized package options within 24 hours.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-light">
+    <div class="container-narrow">
+      <div class="form-card">
+        <form class="pricing-form" id="direct-pricing-form">
+          <div class="form-row-2">
+            <div class="input-wrap">
+              <label for="p-name">Full Name *</label>
+              <input type="text" id="p-name" name="name" required placeholder="Your full name" />
+            </div>
+            <div class="input-wrap">
+              <label for="p-phone">Phone Number (Call / Text) *</label>
+              <input type="tel" id="p-phone" name="phone" required placeholder="(818) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="input-wrap">
+              <label for="p-email">Email Address *</label>
+              <input type="email" id="p-email" name="email" required placeholder="name@email.com" />
+            </div>
+            <div class="input-wrap">
+              <label for="p-event">Type of Event *</label>
+              <select id="p-event" name="eventType" required>
+                <option value="">Select Event Type</option>
+                <option value="Wedding">Wedding in Burbank</option>
+                <option value="Quinceanera">Quinceañera</option>
+                <option value="Birthday">Birthday Party</option>
+                <option value="Sweet 16">Sweet 16</option>
+                <option value="Christening">Christening / Baptism</option>
+                <option value="Corporate">Corporate Gala</option>
+                <option value="Other">Other Private Celebration</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="input-wrap">
+              <label for="p-date">Preferred Event Date</label>
+              <input type="date" id="p-date" name="preferredDate" />
+            </div>
+            <div class="input-wrap">
+              <label for="p-guests">Estimated Number of Guests</label>
+              <select id="p-guests" name="guests">
+                <option value="50-100">50 - 100 Guests</option>
+                <option value="100-150">100 - 150 Guests (The Modern Ballroom)</option>
+                <option value="150-250">150 - 250 Guests (The Grand White Ballroom)</option>
+                <option value="250-340">250 - 340 Guests (The Grand White Ballroom)</option>
+                <option value="340+">340+ Guests</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-wrap">
+            <label for="p-ballroom">Preferred Space</label>
+            <select id="p-ballroom" name="ballroom">
+              <option value="Any">Either Ballroom / Recommend Best Option</option>
+              <option value="The Grand White Ballroom">The Grand White Ballroom (Up to 340)</option>
+              <option value="The Modern Ballroom">The Modern Ballroom (Up to 150)</option>
+              <option value="The Sky Lounge">The Sky Lounge (Rooftop Open-Air)</option>
+            </select>
+          </div>
+
+          <div class="input-wrap">
+            <label for="p-notes">Special Requests / Vision for Your Event</label>
+            <textarea id="p-notes" name="notes" rows="4" placeholder="Let us know what matters most (catering style, lighting colors, bar package, timing...)"></textarea>
+          </div>
+
+          <div class="form-action-area">
+            <button type="submit" class="btn btn-gold w-100 submit-pricing-btn">
+              <span>Submit Inquiry & Request Free Private Tour</span>
+            </button>
+            <p class="privacy-note">
+              ✦ Zero obligation. We will never share your personal information.
+            </p>
+          </div>
+        </form>
+
+        <div class="pricing-success-message" id="pricing-success" style="display: none;">
+          <div class="success-check">✓</div>
+          <h2>Thank You! Your Request Has Been Received</h2>
+          <p>We are reviewing your desired date. A dedicated Burbank Banquet Hall coordinator will contact you promptly with availability details and customized pricing.</p>
+          <a href="/" class="btn btn-primary">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection />
+</AvanaLayout>
+
+<style>
+  .pricing-hero {
+    background-color: var(--color-bg-linen);
+    padding: clamp(4rem, 7vw, 6rem) 1.5rem 3rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .w-100 { width: 100%; text-align: center; }
+
+  .pricing-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .pricing-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-body);
+    max-width: 680px;
+    line-height: 1.65;
+  }
+
+  .form-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  .pricing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .input-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .input-wrap label {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dark);
+  }
+
+  .input-wrap input,
+  .input-wrap select,
+  .input-wrap textarea {
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-linen-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    transition: all 0.25s ease;
+  }
+
+  .input-wrap input:focus,
+  .input-wrap select:focus,
+  .input-wrap textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background-color: #ffffff;
+  }
+
+  .form-action-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  .privacy-note {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .pricing-success-message {
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+
+  .success-check {
+    width: 68px;
+    height: 68px;
+    background-color: var(--color-gold);
+    color: #ffffff;
+    font-size: 2.2rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-success-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-success-message p {
+    font-size: 1.05rem;
+    color: var(--color-text-body);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .form-row-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  function initDirectPricing() {
+    const form = document.getElementById('direct-pricing-form') as HTMLFormElement;
+    const success = document.getElementById('pricing-success');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      if (success) success.style.display = 'block';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initDirectPricing);
+</script>

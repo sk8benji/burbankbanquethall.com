@@ -1,0 +1,157 @@
+---
+import AvanaLayout from '../layouts/AvanaLayout.astro';
+import { galleryImages } from '../data/venue-data';
+import CallToActionBanner from '../components/CallToActionBanner.astro';
+
+const additionalGallery = [
+  ...galleryImages,
+  {
+    url: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80",
+    alt: "Romantic bridal table with floral arch in Burbank banquet hall"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=600&q=80",
+    alt: "Guests dancing and celebrating on hardwood ballroom dance floor"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
+    alt: "Live DJ and intelligent laser lighting setup in Burbank ballroom"
+  }
+];
+---
+
+<AvanaLayout
+  title="Photo Gallery | Burbank Banquet Hall Ballrooms & Events"
+  description="Browse our photo gallery featuring weddings, quinceañeras, birthday galas, and ballroom décor at Burbank Banquet Hall in Burbank, CA."
+>
+  <section class="gallery-hero">
+    <div class="container text-center">
+      <span class="eyebrow">PHOTO GALLERY</span>
+      <h1 class="gallery-title">Moments of Grandeur & Elegance</h1>
+      <p class="gallery-subtitle mx-auto">
+        Explore genuine celebrations hosted at Burbank Banquet Hall. From crystal-lit grand weddings to vibrant quinceañeras and private galas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="gallery-full-grid">
+        {additionalGallery.map((img) => (
+          <div class="gallery-card">
+            <img src={img.url} alt={img.alt} loading="lazy" />
+            <div class="gallery-card-hover">
+              <span class="hover-star">✦</span>
+              <p class="hover-text">{img.alt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="gallery-action text-center mt-4">
+        <a href="#availability-modal" class="btn btn-gold open-modal-trigger">
+          Request Pricing for Your Celebration
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CallToActionBanner />
+</AvanaLayout>
+
+<style>
+  .gallery-hero {
+    background-color: var(--color-bg-linen);
+    padding: clamp(4rem, 7vw, 6rem) 1.5rem 3rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .mt-4 { margin-top: 3.5rem; }
+
+  .gallery-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .gallery-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-body);
+    max-width: 680px;
+    line-height: 1.65;
+  }
+
+  .gallery-full-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .gallery-card {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background-color: #201f1d;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-card-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(24, 22, 18, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-card:hover .gallery-card-hover {
+    opacity: 1;
+  }
+
+  .hover-star {
+    color: var(--color-gold);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hover-text {
+    color: #ffffff;
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    max-width: 280px;
+  }
+
+  @media (max-width: 992px) {
+    .gallery-full-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-full-grid {
+      grid-template-columns: 1fr;
+    }
+    .gallery-card {
+      height: 260px;
+    }
+  }
+</style>

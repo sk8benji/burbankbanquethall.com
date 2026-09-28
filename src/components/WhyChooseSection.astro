@@ -1,0 +1,176 @@
+---
+import { whyChooseUs, venueConfig } from '../data/venue-data';
+---
+
+<section class="why-us-section section-padding" id="why-us">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="eyebrow">WHY CHOOSE US</span>
+      <h2 class="section-title">The Premier Banquet Hall in Burbank</h2>
+      <p class="section-subtitle mx-auto">
+        From grand weddings and quinceañeras to birthday galas and corporate events, Burbank Banquet Hall offers a harmonious blend of refined architecture, award-winning cuisine, and flawless event planning under one roof.
+      </p>
+    </div>
+
+    <!-- 6 Core Value Pillars Grid -->
+    <div class="pillars-grid">
+      {whyChooseUs.map((pillar, index) => (
+        <div class="pillar-card">
+          <div class="pillar-number">0{index + 1}</div>
+          <h3 class="pillar-title">{pillar.title}</h3>
+          <p class="pillar-desc">{pillar.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust Badge Bar -->
+    <div class="trust-badge-bar">
+      <div class="trust-item">
+        <span class="trust-stars">★★★★★</span>
+        <span class="trust-title">{venueConfig.ratings.score}★ Google Reviews</span>
+        <span class="trust-sub">Over {venueConfig.ratings.reviewCount} Verified 5-Star Reviews</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-badge-icon">🏆</span>
+        <span class="trust-title">WeddingWire Couples' Choice</span>
+        <span class="trust-sub">Top 5% of Event Venues Worldwide</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <span class="trust-badge-icon">✨</span>
+        <span class="trust-title">Same-Day Availability Guarantee</span>
+        <span class="trust-sub">Direct coordinator support for every inquiry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-us-section {
+    background-color: #ffffff;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-header {
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  /* Pillars Grid */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .pillar-card {
+    padding: 2.5rem 2rem;
+    background: var(--color-bg-linen-light);
+    border: 1px solid var(--color-border);
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold);
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  .pillar-number {
+    font-family: var(--font-accent);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+
+  .pillar-title {
+    font-size: 1.35rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .pillar-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-body);
+    line-height: 1.65;
+  }
+
+  /* Trust Bar */
+  .trust-badge-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2.25rem 2rem;
+    background: var(--color-bg-linen);
+    border: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+  }
+
+  .trust-stars {
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+  }
+
+  .trust-badge-icon {
+    font-size: 1.4rem;
+  }
+
+  .trust-title {
+    font-family: var(--font-accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    letter-spacing: 0.04em;
+  }
+
+  .trust-sub {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 48px;
+    background-color: var(--color-border);
+  }
+
+  @media (max-width: 992px) {
+    .pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .trust-divider {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

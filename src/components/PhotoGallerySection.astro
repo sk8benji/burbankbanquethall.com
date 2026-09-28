@@ -1,0 +1,128 @@
+---
+import { galleryImages } from '../data/venue-data';
+---
+
+<section class="gallery-section section-padding" id="gallery">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="eyebrow">GALLERY & INSPIRATION</span>
+      <h2 class="section-title">A Glimpse into Burbank Celebrations</h2>
+      <p class="section-subtitle mx-auto">
+        Explore moments from recent weddings, quinceañeras, and gala celebrations hosted inside our Burbank ballrooms.
+      </p>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid">
+      {galleryImages.map((img) => (
+        <div class="masonry-item">
+          <div class="masonry-card">
+            <img src={img.url} alt={img.alt} loading="lazy" />
+            <div class="masonry-overlay">
+              <span class="overlay-icon">✦</span>
+              <p class="overlay-caption">{img.alt}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="gallery-footer text-center">
+      <a href="#availability-modal" class="btn btn-primary open-modal-trigger">
+        <span>Request Pricing for Your Event</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-section {
+    background-color: #ffffff;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-header {
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+
+  /* Masonry Grid */
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .masonry-card {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background-color: #201f1d;
+  }
+
+  .masonry-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .masonry-card:hover img {
+    transform: scale(1.08);
+  }
+
+  .masonry-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(24, 22, 18, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .masonry-card:hover .masonry-overlay {
+    opacity: 1;
+  }
+
+  .overlay-icon {
+    color: var(--color-gold);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .overlay-caption {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-family: var(--font-accent);
+    letter-spacing: 0.04em;
+    max-width: 260px;
+  }
+
+  @media (max-width: 900px) {
+    .masonry-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .masonry-grid {
+      grid-template-columns: 1fr;
+    }
+    .masonry-card {
+      height: 240px;
+    }
+  }
+</style>

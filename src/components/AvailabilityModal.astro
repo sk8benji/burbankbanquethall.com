@@ -1,0 +1,304 @@
+---
+import { venueConfig } from '../data/venue-data';
+---
+
+<div class="modal-overlay" id="availability-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div>
+        <span class="modal-eyebrow">BURBANK BANQUET HALL</span>
+        <h3 class="modal-title">Check Date Availability & Pricing</h3>
+      </div>
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+    </div>
+
+    <form class="modal-form" id="availability-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="lead-name">Full Name *</label>
+          <input type="text" id="lead-name" name="name" required placeholder="Your Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="lead-phone">Phone Number *</label>
+          <input type="tel" id="lead-phone" name="phone" required placeholder="(818) 000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label for="lead-email">Email Address *</label>
+          <input type="email" id="lead-email" name="email" required placeholder="youremail@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="lead-event-type">Event Type *</label>
+          <select id="lead-event-type" name="eventType" required>
+            <option value="">Select Event Type</option>
+            <option value="Wedding">Wedding in Burbank</option>
+            <option value="Quinceañera">Quinceañera</option>
+            <option value="Birthday Party">Birthday Party</option>
+            <option value="Sweet Sixteen">Sweet Sixteen</option>
+            <option value="Christening">Christening / Baptism</option>
+            <option value="Corporate Gala">Corporate Gala</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Other">Other Private Event</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="lead-date">Estimated Event Date</label>
+          <input type="date" id="lead-date" name="eventDate" />
+        </div>
+
+        <div class="form-group">
+          <label for="lead-guests">Estimated Guest Count</label>
+          <select id="lead-guests" name="guestCount">
+            <option value="50-100">50 - 100 Guests</option>
+            <option value="100-150">100 - 150 Guests (Modern Ballroom)</option>
+            <option value="150-250">150 - 250 Guests (Grand White Ballroom)</option>
+            <option value="250-340">250 - 340 Guests (Grand White Ballroom)</option>
+            <option value="340+">340+ Guests</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lead-notes">Tell us about your celebration / Special requests</label>
+        <textarea id="lead-notes" name="notes" rows="3" placeholder="Tell us what you have in mind (Catering, lighting, dance floor, staging...)"></textarea>
+      </div>
+
+      <div class="form-submit-wrap">
+        <button type="submit" class="btn btn-gold w-100 submit-btn">
+          <span>Request Quote & Free Private Tour</span>
+        </button>
+        <p class="form-privacy">
+          🔒 We respect your privacy. No spam. A dedicated Burbank coordinator will respond within 24 hours.
+        </p>
+      </div>
+    </form>
+
+    <div class="modal-success" id="modal-success" style="display: none;">
+      <span class="success-icon">✓</span>
+      <h4>Thank You for Contacting Burbank Banquet Hall!</h4>
+      <p>We have received your date inquiry. One of our event specialists will reach out shortly with availability and pricing options.</p>
+      <button class="btn btn-primary" id="success-close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(24, 22, 18, 0.75);
+    backdrop-filter: blur(5px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-dialog {
+    background-color: #ffffff;
+    max-width: 620px;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 2.5rem 2.25rem;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-eyebrow {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    color: var(--color-text-dark);
+    font-weight: 600;
+  }
+
+  .modal-close-btn {
+    font-size: 2rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    padding: 0;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-linen-light);
+    border-radius: 0;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background-color: #ffffff;
+  }
+
+  .form-submit-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-privacy {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .modal-success {
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+
+  .success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-gold);
+    color: #ffffff;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-success h4 {
+    font-size: 1.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .modal-success p {
+    font-size: 1rem;
+    color: var(--color-text-body);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .modal-dialog {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  function initModal() {
+    const modal = document.getElementById('availability-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const triggers = document.querySelectorAll('.open-modal-trigger');
+    const form = document.getElementById('availability-form') as HTMLFormElement;
+    const successBox = document.getElementById('modal-success');
+    const successCloseBtn = document.getElementById('success-close-btn');
+
+    function openModal(e?: Event) {
+      if (e) e.preventDefault();
+      modal?.classList.add('is-active');
+      modal?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal?.classList.remove('is-active');
+      modal?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (form) form.style.display = 'flex';
+      if (successBox) successBox.style.display = 'none';
+    }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', openModal);
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    successCloseBtn?.addEventListener('click', closeModal);
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Handle form submit mock
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      if (successBox) successBox.style.display = 'block';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initModal);
+</script>

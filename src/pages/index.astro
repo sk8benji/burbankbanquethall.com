@@ -1,0 +1,40 @@
+---
+import AvanaLayout from '../layouts/AvanaLayout.astro';
+import HeroMasonryShowcase from '../components/HeroMasonryShowcase.astro';
+import BallroomsSection from '../components/BallroomsSection.astro';
+import VideoQuotesSlider from '../components/VideoQuotesSlider.astro';
+import WhyChooseSection from '../components/WhyChooseSection.astro';
+import EventsGridSection from '../components/EventsGridSection.astro';
+import PhotoGallerySection from '../components/PhotoGallerySection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import CallToActionBanner from '../components/CallToActionBanner.astro';
+---
+
+<AvanaLayout 
+  title="Banquet Hall in Burbank CA | Luxury Wedding & Event Venue"
+  description="Host your wedding, quinceañera, birthday party or private event at Burbank Banquet Hall. Two grand ballrooms, rooftop sky lounge, award-winning catering & all-inclusive packages in Burbank, CA."
+>
+  <!-- 1. Hero Showcase Section -->
+  <HeroMasonryShowcase />
+
+  <!-- 2. Our Spaces / Ballrooms Showcase -->
+  <BallroomsSection />
+
+  <!-- 3. Quotes & Client Reviews -->
+  <VideoQuotesSlider />
+
+  <!-- 4. Why Choose Us (6 Pillars) -->
+  <WhyChooseSection />
+
+  <!-- 5. Events We Host in Burbank -->
+  <EventsGridSection />
+
+  <!-- 6. Photo Gallery & Moments -->
+  <PhotoGallerySection />
+
+  <!-- 7. FAQ Accordion Section -->
+  <FaqSection />
+
+  <!-- 8. High-Conversion Final CTA -->
+  <CallToActionBanner />
+</AvanaLayout>
