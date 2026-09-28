@@ -29,8 +29,8 @@ export interface VenueService {
 export const venueConfig = {
   name: "Burbank Banquet Hall",
   tagline: "Luxury Wedding & Event Venue in Burbank, CA",
-  phone: "(818) 747-9200",
-  phoneRaw: "8187479200",
+  phone: "(818) 918-2519",
+  phoneRaw: "8189182519",
   email: "events@burbankbanquethall.com",
   address: {
     street: "1110 N San Fernando Blvd",
@@ -278,7 +278,7 @@ export const faqs = [
   },
   {
     question: "How can I schedule a private tour and check date availability?",
-    answer: "You can check date availability and request pricing online through our instant form or by calling our event team directly at (818) 747-9200. We offer complimentary private walkthroughs seven days a week by appointment."
+    answer: "You can check date availability and request pricing online through our instant form or by calling our event team directly at (818) 918-2519. We offer complimentary private walkthroughs seven days a week by appointment."
   }
 ];
 
