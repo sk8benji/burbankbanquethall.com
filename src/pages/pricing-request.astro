@@ -242,8 +242,35 @@ const description = "Check date availability and request custom pricing for wedd
     const form = document.getElementById('direct-pricing-form') as HTMLFormElement;
     const success = document.getElementById('pricing-success');
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const submitBtn = form.querySelector('.submit-pricing-btn') as HTMLButtonElement;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        eventType: formData.get('eventType'),
+        eventDate: formData.get('preferredDate'),
+        guestCount: formData.get('guests'),
+        notes: `Espacio deseado: ${formData.get('ballroom') || 'No especificado'}\nNotas: ${formData.get('notes') || ''}`
+      };
+
+      try {
+        await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('Error submitting inquiry:', err);
+      }
+
       form.style.display = 'none';
       if (success) success.style.display = 'block';
     });

@@ -292,9 +292,28 @@ import { venueConfig } from '../data/venue-data';
       }
     });
 
-    // Handle form submit mock
-    form?.addEventListener('submit', (e) => {
+    // Handle form submit
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('Error submitting form:', err);
+      }
+
       form.style.display = 'none';
       if (successBox) successBox.style.display = 'block';
     });
