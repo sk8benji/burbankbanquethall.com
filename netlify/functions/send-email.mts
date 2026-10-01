@@ -1,5 +1,5 @@
 import type { Handler } from '@netlify/functions';
-import nodemailer from 'nodemailer';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 
 export const handler: Handler = async (event) => {
   // Solo permitir solicitudes POST
@@ -22,15 +22,13 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    // Configuración SMTP de AWS SES
-    const host = process.env.AWS_SES_HOST || 'email-smtp.us-east-1.amazonaws.com';
-    const port = Number(process.env.AWS_SES_PORT) || 587;
-    const user = process.env.AWS_SES_USER;
-    const pass = process.env.AWS_SES_PASS;
+    const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+    const region = process.env.AWS_REGION || 'us-east-1';
     const fromEmail = process.env.EMAIL_FROM || 'info@burbankbanquethall.com';
-    const toEmail = process.env.EMAIL_TO || 'events@burbankbanquethall.com';
+    const toEmail = process.env.EMAIL_TO || 'sk8benji@gmail.com';
 
-    if (!user || !pass) {
+    if (!accessKeyId || !secretAccessKey) {
       console.warn('AWS SES credentials not set in environment variables.');
       return {
         statusCode: 200,
@@ -41,52 +39,87 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    // Crear transporte SMTP para AWS SES
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: {
-        user,
-        pass
+    const client = new SESClient({
+      region,
+      credentials: {
+        accessKeyId,
+        secretAccessKey
       }
     });
 
     const mailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e7e0d6;">
-        <h2 style="color: #201f1d; border-bottom: 2px solid #C9A84C; padding-bottom: 10px;">
-          Nueva Consulta - Burbank Banquet Hall
-        </h2>
-        <p><strong>Nombre del Cliente:</strong> ${name}</p>
-        <p><strong>Teléfono:</strong> <a href="tel:${phone}">${phone}</a></p>
-        <p><strong>Email:</strong> ${email || 'No proporcionado'}</p>
-        <p><strong>Tipo de Evento:</strong> ${eventType || 'No especificado'}</p>
-        <p><strong>Fecha Estimada:</strong> ${eventDate || 'Por definir'}</p>
-        <p><strong>Cantidad de Invitados:</strong> ${guestCount || 'No especificado'}</p>
-        <p><strong>Notas / Requerimientos:</strong></p>
-        <blockquote style="background: #f5f0e7; padding: 10px 15px; margin: 10px 0; border-left: 3px solid #C9A84C;">
-          ${notes || 'Sin notas adicionales'}
-        </blockquote>
-        <hr style="border: 0; border-top: 1px solid #e7e0d6; margin: 20px 0;" />
-        <small style="color: #888;">Enviado desde el sitio web burbankbanquethall.com a través de Amazon SES</small>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e7e0d6; border-radius: 8px;">
+        <div style="background-color: #201f1d; padding: 20px; text-align: center; border-radius: 6px 6px 0 0;">
+          <h2 style="color: #C9A84C; margin: 0; font-size: 20px; letter-spacing: 1px;">BURBANK BANQUET HALL</h2>
+          <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 13px;">Nueva Consulta de Cliente</p>
+        </div>
+        <div style="padding: 24px; background: #ffffff;">
+          <p><strong>Nombre del Cliente:</strong> ${name}</p>
+          <p><strong>Teléfono:</strong> <a href="tel:${phone}" style="color: #C9A84C; text-decoration: none; font-weight: bold;">${phone}</a></p>
+          <p><strong>Email:</strong> ${email ? `<a href="mailto:${email}">${email}</a>` : 'No proporcionado'}</p>
+          <p><strong>Tipo de Evento:</strong> ${eventType || 'No especificado'}</p>
+          <p><strong>Fecha Estimada:</strong> ${eventDate || 'Por definir'}</p>
+          <p><strong>Cantidad de Invitados:</strong> ${guestCount || 'No especificado'}</p>
+          <p><strong>Mensaje / Requerimientos:</strong></p>
+          <blockquote style="background: #fdfaf5; padding: 12px 16px; margin: 12px 0; border-left: 4px solid #C9A84C; color: #444;">
+            ${notes || 'Sin notas adicionales'}
+          </blockquote>
+        </div>
+        <div style="background: #f5f0e7; padding: 12px; text-align: center; font-size: 11px; color: #777; border-radius: 0 0 6px 6px;">
+          Enviado automáticamente desde el sitio web burbankbanquethall.com vía Amazon SES
+        </div>
       </div>
     `;
 
-    await transporter.sendMail({
-      from: `"Burbank Banquet Hall" <${fromEmail}>`,
-      to: toEmail,
-      replyTo: email || fromEmail,
-      subject: `Nuevo Lead: ${eventType || 'Evento'} - ${name}`,
-      html: mailHtml
+    const mailText = `
+Nueva Consulta - Burbank Banquet Hall
+-------------------------------------
+Nombre: ${name}
+Teléfono: ${phone}
+Email: ${email || 'No proporcionado'}
+Tipo de Evento: ${eventType || 'No especificado'}
+Fecha: ${eventDate || 'Por definir'}
+Invitados: ${guestCount || 'No especificado'}
+Notas: ${notes || 'Sin notas adicionales'}
+    `;
+
+    const command = new SendEmailCommand({
+      Source: `"Burbank Banquet Hall" <${fromEmail}>`,
+      Destination: {
+        ToAddresses: [toEmail]
+      },
+      ReplyToAddresses: email ? [email] : [fromEmail],
+      Message: {
+        Subject: {
+          Data: `Nuevo Lead: ${eventType || 'Evento'} - ${name}`,
+          Charset: 'UTF-8'
+        },
+        Body: {
+          Html: {
+            Data: mailHtml,
+            Charset: 'UTF-8'
+          },
+          Text: {
+            Data: mailText,
+            Charset: 'UTF-8'
+          }
+        }
+      }
     });
+
+    const response = await client.send(command);
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ success: true, message: 'Email sent successfully!' })
+      body: JSON.stringify({
+        success: true,
+        message: 'Email sent successfully via AWS SES!',
+        messageId: response.MessageId
+      })
     };
   } catch (error: any) {
-    console.error('Error sending email via AWS SES:', error);
+    console.error('Error sending email via AWS SES SDK:', error);
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
