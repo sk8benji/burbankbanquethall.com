@@ -85,7 +85,7 @@ export const ballrooms: Ballroom[] = [
       "Expansive Hardwood Dance Floor & Staging",
       "Private Bridal Suite & VIP Dressing Rooms"
     ],
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/venue/burbank-hall-dancefloor-1.jpg",
     ctaText: "Check Availability"
   },
   {
@@ -110,7 +110,7 @@ export const ballrooms: Ballroom[] = [
       "Integrated Multimedia & Projection Screens",
       "Customizable Cocktail Bar Area"
     ],
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/venue/burbank-hall-interior-setup-5.jpg",
     ctaText: "Check Availability"
   },
   {
@@ -134,7 +134,7 @@ export const ballrooms: Ballroom[] = [
       "Outdoor Bar & Gourmet Bites Station",
       "Under-the-Stars Lounge Seating"
     ],
-    image: "https://images.unsplash.com/photo-1545232979-fbf68fe9b1af?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/venue/burbank-hall-banquet-tables-3.jpg",
     ctaText: "Join the Waitlist",
     isUpcoming: true
   }
@@ -151,7 +151,7 @@ export const keyServices: VenueService[] = [
     description: "Your wedding day deserves perfection. At Burbank Banquet Hall, we transform romantic visions into breathtaking realities with majestic crystal chandeliers, exquisite cuisine, and dedicated day-of coordination.",
     capacity: "50 to 340 Guests",
     highlights: ["Complimentary Bridal Suite", "All-Inclusive Décor & Floral Options", "Multi-Course Gourmet Catering", "Custom Ceremony & Reception Layouts"],
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80"
+    image: "/images/venue/burbank-hall-wedding-stage-2.jpg"
   },
   {
     slug: "birthday-parties",
@@ -163,7 +163,7 @@ export const keyServices: VenueService[] = [
     description: "Whether you are celebrating a 30th, 50th, 75th, or any milestone in between, Burbank Banquet Hall sets the stage for an electrifying party with gourmet food, custom lighting, and dedicated staff.",
     capacity: "50 to 340 Guests",
     highlights: ["State-of-the-Art DJ & Lighting Booth", "Cocktail Bar & Custom Mixology", "Themed Backdrop & Photo Booth Space", "Flexible Seating & Lounge Configurations"],
-    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1000&q=80"
+    image: "/images/venue/burbank-hall-banquet-tables-3.jpg"
   },
   {
     slug: "quinceaneras",
@@ -175,7 +175,7 @@ export const keyServices: VenueService[] = [
     description: "Celebrate the cherished transition into young womanhood with a royal quinceañera in Burbank. Our ballrooms provide the grandeur required for the grand entrance, father-daughter waltz, and an unforgettable fiesta.",
     capacity: "Up to 340 Guests",
     highlights: ["Royal Entrance & Court of Honor Staging", "Custom Color-Coded LED Uplighting", "Traditional & Contemporary Hispanic Catering", "Bilingual Event Coordinators & Staff"],
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80"
+    image: "/images/venue/burbank-hall-lighting-party-4.jpg"
   },
   {
     slug: "sweet-sixteen",
@@ -187,7 +187,7 @@ export const keyServices: VenueService[] = [
     description: "Give your teen the celebration of their dreams with a high-fashion, high-energy Sweet Sixteen. Featuring red-carpet photo arrivals, custom mocktail bars, and top-tier sound systems.",
     capacity: "50 to 300 Guests",
     highlights: ["Club-Style Lighting & Fog Effects", "Red Carpet Arrival & Step-and-Repeat", "Custom Mocktail & Dessert Bars", "Dedicated Security & Chaperone Services"],
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80"
+    image: "/images/venue/burbank-hall-dancefloor-1.jpg"
   }
 ];
 
@@ -284,33 +284,33 @@ export const faqs = [
 
 export const galleryImages = [
   {
-    url: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80",
-    alt: "The Grand White Ballroom set for luxury wedding reception in Burbank",
+    url: "/images/venue/burbank-hall-dancefloor-1.jpg",
+    alt: "The Grand White Ballroom white dance floor and luxury ceiling in Burbank",
     span: "col-span-2 row-span-2"
   },
   {
-    url: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80",
-    alt: "Grand wedding banquet table with candelabras and floral runners in Burbank",
+    url: "/images/venue/burbank-hall-wedding-stage-2.jpg",
+    alt: "Wedding sweetheart table and floral arch stage at Burbank Banquet Hall",
     span: "col-span-1 row-span-1"
   },
   {
-    url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80",
-    alt: "Modern ballroom ambient lighting and hardwood dance floor in Burbank",
+    url: "/images/venue/burbank-hall-banquet-tables-3.jpg",
+    alt: "Banquet dinner tables with silver chiavari chairs and crystal chandelier in Burbank",
     span: "col-span-1 row-span-1"
   },
   {
-    url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80",
-    alt: "Lavish birthday gala party setup with champagne flutes in Burbank banquet hall",
+    url: "/images/venue/burbank-hall-lighting-party-4.jpg",
+    alt: "Vibrant party dance floor and ambient lighting at Burbank Banquet Hall",
     span: "col-span-1 row-span-2"
   },
   {
-    url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80",
-    alt: "Quinceañera royal entrance setup with gold chiavari chairs",
+    url: "/images/venue/burbank-hall-interior-setup-5.jpg",
+    alt: "Spacious ballroom setup with elegant banquet tables and modern lighting in Burbank",
     span: "col-span-1 row-span-1"
   },
   {
-    url: "https://images.unsplash.com/photo-1545232979-fbf68fe9b1af?auto=format&fit=crop&w=600&q=80",
-    alt: "Open-air sky lounge cocktail setup overlooking Burbank sunset",
+    url: "/images/venue/burbank-hall-dancefloor-1.jpg",
+    alt: "Grand wedding reception setup with royal white dance floor in Burbank",
     span: "col-span-1 row-span-1"
   }
 ];
