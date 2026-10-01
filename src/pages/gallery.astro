@@ -3,19 +3,46 @@ import AvanaLayout from '../layouts/AvanaLayout.astro';
 import { galleryImages } from '../data/venue-data';
 import CallToActionBanner from '../components/CallToActionBanner.astro';
 
-const additionalGallery = [
-  ...galleryImages,
+const fullGallery = [
   {
-    url: "/images/venue/burbank-hall-wedding-stage-2.jpg",
-    alt: "Wedding sweetheart table and floral backdrop setup in Burbank"
+    url: "/images/venue/burbank-hall-stage-screen-6.jpg",
+    alt: "The Grand White Ballroom stage with giant screen and crystal chandelier in Burbank"
+  },
+  {
+    url: "/images/venue/burbank-hall-sweetheart-table-9.jpg",
+    alt: "Wedding sweetheart table and floral arch stage at Burbank Banquet Hall"
+  },
+  {
+    url: "/images/venue/burbank-hall-wedding-reception-7.jpg",
+    alt: "Grand wedding banquet dinner reception with guests and crystal chandeliers in Burbank"
+  },
+  {
+    url: "/images/venue/burbank-hall-chandeliers-tables-8.jpg",
+    alt: "Spacious ballroom setup with silver chiavari chairs and luxury candelabras in Burbank"
+  },
+  {
+    url: "/images/venue/burbank-hall-dancefloor-1.jpg",
+    alt: "Grand wedding reception setup with royal white dance floor and lighting in Burbank"
   },
   {
     url: "/images/venue/burbank-hall-lighting-party-4.jpg",
-    alt: "Guests dancing and celebrating on dance floor at Burbank Banquet Hall"
+    alt: "Vibrant party dance floor and ambient lighting at Burbank Banquet Hall"
   },
   {
     url: "/images/venue/burbank-hall-interior-setup-5.jpg",
     alt: "Modern ballroom interior with chandeliers and round banquet tables"
+  },
+  {
+    url: "/images/venue/burbank-hall-banquet-tables-3.jpg",
+    alt: "Guests enjoying formal banquet reception dinner with silver chiavari chairs"
+  },
+  {
+    url: "/images/venue/burbank-hall-ceiling-architecture-10.jpg",
+    alt: "Elegant ceiling architecture and luxury rectangular chandelier"
+  },
+  {
+    url: "/images/venue/burbank-hall-banquet-guests-11.jpg",
+    alt: "Banquet guests dining in spacious Burbank ballroom setup"
   }
 ];
 ---
@@ -37,7 +64,7 @@ const additionalGallery = [
   <section class="section-padding bg-light">
     <div class="container">
       <div class="gallery-full-grid">
-        {additionalGallery.map((img) => (
+        {fullGallery.map((img) => (
           <div class="gallery-card">
             <img src={img.url} alt={img.alt} loading="lazy" />
             <div class="gallery-card-hover">

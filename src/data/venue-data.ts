@@ -85,7 +85,7 @@ export const ballrooms: Ballroom[] = [
       "Expansive Hardwood Dance Floor & Staging",
       "Private Bridal Suite & VIP Dressing Rooms"
     ],
-    image: "/images/venue/burbank-hall-dancefloor-1.jpg",
+    image: "/images/venue/burbank-hall-stage-screen-6.jpg",
     ctaText: "Check Availability"
   },
   {
@@ -110,7 +110,7 @@ export const ballrooms: Ballroom[] = [
       "Integrated Multimedia & Projection Screens",
       "Customizable Cocktail Bar Area"
     ],
-    image: "/images/venue/burbank-hall-interior-setup-5.jpg",
+    image: "/images/venue/burbank-hall-chandeliers-tables-8.jpg",
     ctaText: "Check Availability"
   },
   {
@@ -134,7 +134,7 @@ export const ballrooms: Ballroom[] = [
       "Outdoor Bar & Gourmet Bites Station",
       "Under-the-Stars Lounge Seating"
     ],
-    image: "/images/venue/burbank-hall-banquet-tables-3.jpg",
+    image: "/images/venue/burbank-hall-interior-setup-5.jpg",
     ctaText: "Join the Waitlist",
     isUpcoming: true
   }
@@ -151,7 +151,7 @@ export const keyServices: VenueService[] = [
     description: "Your wedding day deserves perfection. At Burbank Banquet Hall, we transform romantic visions into breathtaking realities with majestic crystal chandeliers, exquisite cuisine, and dedicated day-of coordination.",
     capacity: "50 to 340 Guests",
     highlights: ["Complimentary Bridal Suite", "All-Inclusive Décor & Floral Options", "Multi-Course Gourmet Catering", "Custom Ceremony & Reception Layouts"],
-    image: "/images/venue/burbank-hall-wedding-stage-2.jpg"
+    image: "/images/venue/burbank-hall-sweetheart-table-9.jpg"
   },
   {
     slug: "birthday-parties",
@@ -163,7 +163,7 @@ export const keyServices: VenueService[] = [
     description: "Whether you are celebrating a 30th, 50th, 75th, or any milestone in between, Burbank Banquet Hall sets the stage for an electrifying party with gourmet food, custom lighting, and dedicated staff.",
     capacity: "50 to 340 Guests",
     highlights: ["State-of-the-Art DJ & Lighting Booth", "Cocktail Bar & Custom Mixology", "Themed Backdrop & Photo Booth Space", "Flexible Seating & Lounge Configurations"],
-    image: "/images/venue/burbank-hall-banquet-tables-3.jpg"
+    image: "/images/venue/burbank-hall-wedding-reception-7.jpg"
   },
   {
     slug: "quinceaneras",
@@ -284,18 +284,18 @@ export const faqs = [
 
 export const galleryImages = [
   {
-    url: "/images/venue/burbank-hall-dancefloor-1.jpg",
-    alt: "The Grand White Ballroom white dance floor and luxury ceiling in Burbank",
+    url: "/images/venue/burbank-hall-stage-screen-6.jpg",
+    alt: "The Grand White Ballroom stage with giant screen and crystal chandelier in Burbank",
     span: "col-span-2 row-span-2"
   },
   {
-    url: "/images/venue/burbank-hall-wedding-stage-2.jpg",
+    url: "/images/venue/burbank-hall-sweetheart-table-9.jpg",
     alt: "Wedding sweetheart table and floral arch stage at Burbank Banquet Hall",
     span: "col-span-1 row-span-1"
   },
   {
-    url: "/images/venue/burbank-hall-banquet-tables-3.jpg",
-    alt: "Banquet dinner tables with silver chiavari chairs and crystal chandelier in Burbank",
+    url: "/images/venue/burbank-hall-wedding-reception-7.jpg",
+    alt: "Grand wedding banquet dinner reception with guests and crystal chandeliers in Burbank",
     span: "col-span-1 row-span-1"
   },
   {
@@ -304,8 +304,8 @@ export const galleryImages = [
     span: "col-span-1 row-span-2"
   },
   {
-    url: "/images/venue/burbank-hall-interior-setup-5.jpg",
-    alt: "Spacious ballroom setup with elegant banquet tables and modern lighting in Burbank",
+    url: "/images/venue/burbank-hall-chandeliers-tables-8.jpg",
+    alt: "Spacious ballroom setup with silver chiavari chairs and luxury candelabra in Burbank",
     span: "col-span-1 row-span-1"
   },
   {
