@@ -41,8 +41,9 @@ const venueImages = [
 
       <!-- Content Below the 3 Images -->
       <div class="venue-card-body">
+        <h3 class="venue-showcase-title">Unforgettable Celebrations in Burbank</h3>
         <p class="venue-desc">
-          From captivating crystal aesthetics and enthralling lighting to renowned in-house catering and individualized attention — every detail crafted for an unparalleled sensory journey in Burbank. Designed for memories that last a lifetime.
+          From elegant crystal accents and immersive lighting to exclusive in-house catering and personalized service—every detail is curated to deliver a one-of-a-kind sensory experience, crafted for memories that last a lifetime.
         </p>
 
         <!-- Specs Grid -->
@@ -152,6 +153,16 @@ const venueImages = [
   /* Venue Card Body */
   .venue-card-body {
     padding: 2.75rem clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .venue-showcase-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.01em;
   }
 
   .venue-desc {

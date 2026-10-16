@@ -68,7 +68,7 @@ export const ballrooms: Ballroom[] = [
     name: "The Grand White Ballroom",
     tag: "White Ballroom",
     subtitle: "A breathtaking space designed for grand celebrations.",
-    description: "From captivating crystal aesthetics and enthralling lighting to renowned in-house catering and individualized attention — every detail crafted for an unparalleled sensory journey in Burbank.",
+    description: "From elegant crystal accents and immersive lighting to exclusive in-house catering and personalized service—every detail is curated to deliver a one-of-a-kind sensory experience, crafted for memories that last a lifetime.",
     capacity: "Up to 340 Guests",
     style: "Grand & Elegant",
     bestFor: [
