@@ -16,7 +16,8 @@ const navLinks = [
   { name: 'Our Spaces', href: '/#ballrooms' },
   { name: 'Why Us', href: '/#why-us' },
   { name: 'Reviews', href: '/#reviews' },
-  { name: 'FAQ', href: '/#faqs' }
+  { name: 'FAQ', href: '/#faqs' },
+  { name: 'Español', href: '/espanol', isSpecial: true }
 ];
 ---
 
@@ -38,7 +39,7 @@ const navLinks = [
           const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
           return (
             <li class="nav-item">
-              <a href={link.href} class={`nav-link ${isActive ? 'active' : ''}`}>
+              <a href={link.href} class={`nav-link ${isActive ? 'active' : ''} ${link.isSpecial ? 'nav-link-special' : ''}`}>
                 {link.name}
               </a>
             </li>
@@ -71,7 +72,7 @@ const navLinks = [
     <ul class="drawer-list">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="drawer-link">
+          <a href={link.href} class={`drawer-link ${link.isSpecial ? 'drawer-link-special' : ''}`}>
             {link.name}
           </a>
         </li>
@@ -190,6 +191,29 @@ const navLinks = [
 
   .nav-link:hover::after, .nav-link.active::after {
     width: 100%;
+  }
+
+  .nav-link-special {
+    color: var(--color-gold) !important;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem !important;
+    border: 1px solid var(--color-gold);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link-special:hover, .nav-link-special.active {
+    background: var(--color-gold);
+    color: #ffffff !important;
+  }
+
+  .nav-link-special::after {
+    display: none !important;
+  }
+
+  .drawer-link-special {
+    color: var(--color-gold) !important;
+    font-weight: 700;
   }
 
   /* Actions */

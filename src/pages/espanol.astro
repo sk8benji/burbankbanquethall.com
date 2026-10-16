@@ -1,0 +1,720 @@
+---
+import AvanaLayout from '../layouts/AvanaLayout.astro';
+import { venueConfig, ballrooms, quotes } from '../data/venue-data';
+import FaqSection from '../components/FaqSection.astro';
+import CallToActionBanner from '../components/CallToActionBanner.astro';
+
+const spanishFaqs = [
+  {
+    question: "¿Qué es Burbank Banquet Hall?",
+    answer: "Burbank Banquet Hall es un salón de eventos y banquetes de primer nivel ubicado en Burbank, California. Cuenta con dos majestuosos salones de baile interiores, una terraza al aire libre (Sky Lounge), servicio de banquetes gourmet, iluminación LED personalizada, sonido profesional y coordinación bilingüe para bodas, quinceañeras, cumpleaños y celebraciones privadas."
+  },
+  {
+    question: "¿Dónde están ubicados?",
+    answer: "Estamos convenientemente ubicados en 1110 N San Fernando Blvd, Burbank, CA 91504, a minutos de las autopistas I-5 y CA-134. Contamos con fácil acceso y estacionamiento para invitados de Glendale, North Hollywood, Pasadena, San Fernando Valley y todo Los Ángeles."
+  },
+  {
+    question: "¿Cuántos invitados pueden albergar sus salones?",
+    answer: "The Grand White Ballroom tiene capacidad de hasta 340 invitados sentados con amplia pista de baile y escenario, ideal para grandes bodas y quinceañeras. The Modern Ballroom alberga hasta 150 invitados para celebraciones más íntimas, y nuestra terraza Sky Lounge hasta 180 personas."
+  },
+  {
+    question: "¿Tienen paquetes todo incluido y personal bilingüe?",
+    answer: "Sí. Ofrecemos paquetes completos que incluyen banquete gourmet, cristalería, mantelería fina, sillas chiavari, iluminación ambiental, equipo de sonido, montaje, desmontaje y coordinadores de eventos totalmente bilingües (inglés y español)."
+  },
+  {
+    question: "¿Cómo puedo agendar un recorrido privado?",
+    answer: "Puede verificar disponibilidad y solicitar precios completando nuestro formulario en línea o llamando/enviando un mensaje de texto directamente al (818) 918-2519. Ofrecemos recorridos guiados gratuitos los 7 días de la semana con cita previa."
+  }
+];
+---
+
+<AvanaLayout 
+  title="Salón de Banquetes en Burbank CA | Bodas, Quinceañeras y Eventos"
+  description="Celebre su boda, quinceañera, cumpleaños o evento privado en Burbank Banquet Hall. Dos salones de lujo, terraza sky lounge, banquetes y coordinación bilingüe en Burbank, CA."
+  currentPath="/espanol"
+>
+  <!-- Hero Section en Español -->
+  <section class="hero-showcase-section">
+    <div class="container">
+      <div class="hero-layout">
+        <!-- Columna de Contenido -->
+        <div class="hero-content">
+          <div class="hero-trust-badge">
+            <div class="stars">★★★★★</div>
+            <span class="badge-text">{venueConfig.ratings.score}★ Salón #1 en Burbank · {venueConfig.ratings.reviewCount} Reseñas en Google</span>
+          </div>
+
+          <h1 class="hero-h1">
+            El Salón de Banquetes <span class="text-gold">Principal</span> en Burbank, CA
+          </h1>
+
+          <p class="hero-description">
+            Celebre su boda, quinceañera, cumpleaños especial o evento privado en el salón de eventos más cotizado de Burbank. Contamos con dos magníficos salones de baile, una terraza al aire libre (Sky Lounge), banquetes galardonados y coordinación personalizada bajo un mismo techo.
+          </p>
+
+          <!-- Botones de Acción -->
+          <div class="hero-actions">
+            <a href="#availability-modal" class="btn btn-primary open-modal-trigger">
+              <span>Consultar Disponibilidad y Precios</span>
+            </a>
+            <a href={`tel:${venueConfig.phoneRaw}`} class="btn btn-outline">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Llamar o Texto: {venueConfig.phone}</span>
+            </a>
+          </div>
+
+          <!-- Píldoras de Destacados -->
+          <div class="hero-pills">
+            <div class="pill-item">
+              <span class="pill-dot">✦</span>
+              <span>Capacidad hasta 340</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-dot">✦</span>
+              <span>2 Salones + Sky Lounge</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-dot">✦</span>
+              <span>Decoración Todo Incluido</span>
+            </div>
+            <div class="pill-item">
+              <span class="pill-dot">✦</span>
+              <span>Atención 100% Bilingüe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Visual: Mosaico de Salones -->
+        <div class="hero-visual-grid">
+          <div class="grid-col main-col">
+            <div class="grid-card card-large">
+              <img 
+                src="/images/venue/burbank-hall-dancefloor-1.jpg" 
+                alt="Pista de baile The Grand White Ballroom en Burbank Banquet Hall"
+                loading="eager"
+              />
+              <div class="card-caption">
+                <span class="caption-tag">GRAND WHITE BALLROOM</span>
+                <span class="caption-sub">Hasta 340 Invitados</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid-col side-col">
+            <div class="grid-card card-small">
+              <img 
+                src="/images/venue/burbank-hall-modern-ballroom-12.jpg" 
+                alt="The Modern Ballroom en Burbank Banquet Hall"
+                loading="eager"
+              />
+              <div class="card-caption">
+                <span class="caption-tag">THE MODERN BALLROOM</span>
+                <span class="caption-sub">Celebraciones Íntimas</span>
+              </div>
+            </div>
+            <div class="grid-card card-small">
+              <img 
+                src="/images/venue/burbank-hall-wedding-stage-2.jpg" 
+                alt="Escenario para Bodas y Quinceañeras en Burbank"
+                loading="eager"
+              />
+              <div class="card-caption">
+                <span class="caption-tag">ESCENARIO REAL</span>
+                <span class="caption-sub">Eventos Inolvidables</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Nuestros Salones -->
+  <section class="section-padding bg-light" id="salones">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">NUESTROS ESPACIOS</span>
+        <h2 class="section-title">Dos Salones Espectaculares en Burbank</h2>
+        <p class="section-subtitle mx-auto">
+          Ya sea una fiesta íntima o una gran gala de lujo, elija el espacio ideal para celebrar su ocasión especial en Los Ángeles.
+        </p>
+      </div>
+
+      <div class="ballrooms-grid">
+        <!-- Salón 1 -->
+        <article class="ballroom-card">
+          <div class="card-image-wrap">
+            <img src="/images/venue/burbank-hall-stage-screen-6.jpg" alt="The Grand White Ballroom" loading="lazy" />
+            <span class="card-tag">Gran Salón Blanco</span>
+          </div>
+          <div class="card-body">
+            <h3 class="ballroom-title">The Grand White Ballroom</h3>
+            <p class="ballroom-desc">
+              Espacio majestuoso con candelabros de cristal, iluminación ambiental LED de última generación y amplio espacio para más de 340 invitados.
+            </p>
+            <div class="ballroom-specs">
+              <div class="spec-row">
+                <span class="spec-label">Capacidad</span>
+                <span class="spec-value">Hasta 340 Invitados</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Estilo</span>
+                <span class="spec-value">Lujoso y Majestuoso</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Ideal para</span>
+                <span class="spec-value spec-best-for">Bodas, Quinceañeras, Galas</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#availability-modal" class="btn btn-primary w-100 open-modal-trigger" data-ballroom="The Grand White Ballroom">
+                <span>Consultar Disponibilidad</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Salón 2 (The Modern Ballroom con nueva foto) -->
+        <article class="ballroom-card">
+          <div class="card-image-wrap">
+            <img src="/images/venue/burbank-hall-modern-ballroom-12.jpg" alt="The Modern Ballroom" loading="lazy" />
+            <span class="card-tag">Salón Moderno</span>
+          </div>
+          <div class="card-body">
+            <h3 class="ballroom-title">The Modern Ballroom</h3>
+            <p class="ballroom-desc">
+              Ambiente vanguardista y elegante con detalles arquitectónicos contemporáneos, iluminación perimetral azul y atmósfera acogedora para hasta 150 invitados.
+            </p>
+            <div class="ballroom-specs">
+              <div class="spec-row">
+                <span class="spec-label">Capacidad</span>
+                <span class="spec-value">Hasta 150 Invitados</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Estilo</span>
+                <span class="spec-value">Moderno e Íntimo</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Ideal para</span>
+                <span class="spec-value spec-best-for">Cumpleaños, Bautizos, Sweet 16</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#availability-modal" class="btn btn-primary w-100 open-modal-trigger" data-ballroom="The Modern Ballroom">
+                <span>Consultar Disponibilidad</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Salón 3 (The Sky Lounge) -->
+        <article class="ballroom-card is-upcoming">
+          <div class="card-image-wrap">
+            <img src="/images/venue/burbank-hall-interior-setup-5.jpg" alt="The Sky Lounge" loading="lazy" />
+            <span class="card-tag">Próxima Apertura</span>
+          </div>
+          <div class="card-body">
+            <h3 class="ballroom-title">The Sky Lounge</h3>
+            <p class="ballroom-desc">
+              Terraza al aire libre en la azotea con vista panorámica a las montañas de Burbank. Ideal para cócteles, ceremonias civiles y recepciones bajo las estrellas.
+            </p>
+            <div class="ballroom-specs">
+              <div class="spec-row">
+                <span class="spec-label">Capacidad</span>
+                <span class="spec-value">Hasta 180 Invitados</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Estilo</span>
+                <span class="spec-value">Terraza Panorámica</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Ideal para</span>
+                <span class="spec-value spec-best-for">Cócteles, Ceremonias, Aniversarios</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#availability-modal" class="btn btn-outline w-100 open-modal-trigger" data-ballroom="The Sky Lounge">
+                <span>Unirse a Lista de Espera</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Eventos Populares -->
+  <section class="section-padding bg-linen">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">CELEBRACIONES INOLVIDABLES</span>
+        <h2 class="section-title">Eventos que Realizamos en Burbank</h2>
+        <p class="section-subtitle mx-auto">
+          Ofrecemos paquetes integrales adaptados a las tradiciones y gustos de cada familia.
+        </p>
+      </div>
+
+      <div class="events-cards-grid">
+        <div class="spanish-event-card">
+          <img src="/images/venue/burbank-hall-lighting-party-4.jpg" alt="Quinceañeras en Burbank" />
+          <div class="s-event-body">
+            <h3>Quinceañeras Reales</h3>
+            <p>Entrada triunfal, escenario para el vals de honor, iluminación LED del color de su vestido y coordinación bilingüe.</p>
+            <a href="/quinceaneras" class="s-event-link">Ver Detalles de Quinceañeras →</a>
+          </div>
+        </div>
+
+        <div class="spanish-event-card">
+          <img src="/images/venue/burbank-hall-sweetheart-table-9.jpg" alt="Bodas en Burbank" />
+          <div class="s-event-body">
+            <h3>Bodas de Ensueño</h3>
+            <p>Mesa de novios con arco floral, menú de varios tiempos, suite nupcial privada y atención a cada detalle.</p>
+            <a href="/weddings" class="s-event-link">Ver Detalles de Bodas →</a>
+          </div>
+        </div>
+
+        <div class="spanish-event-card">
+          <img src="/images/venue/burbank-hall-wedding-reception-7.jpg" alt="Cumpleaños y Aniversarios" />
+          <div class="s-event-body">
+            <h3>Cumpleaños y Galas</h3>
+            <p>Celebre 30, 40, 50 o cualquier aniversario con música, pista de baile de lujo y barra de cócteles.</p>
+            <a href="/birthday-parties" class="s-event-link">Ver Fiestas de Cumpleaños →</a>
+          </div>
+        </div>
+
+        <div class="spanish-event-card">
+          <img src="/images/venue/burbank-hall-dancefloor-1.jpg" alt="Sweet Sixteen en Burbank" />
+          <div class="s-event-body">
+            <h3>Sweet 16</h3>
+            <p>Fiestas juveniles con iluminación de discoteca, alfombra roja, estación de mocktails y ambiente seguro.</p>
+            <a href="/sweet-sixteen" class="s-event-link">Ver Sweet Sixteen →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas Frecuentes en Español -->
+  <section class="section-padding bg-light">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">PREGUNTAS FRECUENTES</span>
+        <h2 class="section-title">Todo lo que Necesita Saber</h2>
+      </div>
+
+      <div class="faq-list mx-auto">
+        {spanishFaqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <span class="faq-arrow">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="#availability-modal" class="btn btn-primary open-modal-trigger">
+          <span>Solicitar Cotización y Disponibilidad</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CallToActionBanner />
+</AvanaLayout>
+
+<style>
+  .hero-showcase-section {
+    padding-top: clamp(2.5rem, 5vw, 4.5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    background: linear-gradient(180deg, #ffffff 0%, var(--color-bg-linen-light) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: center;
+  }
+
+  .hero-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 40px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .stars {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .badge-text {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.25rem, 4vw, 3.65rem);
+    line-height: 1.15;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .text-gold {
+    color: var(--color-gold);
+    font-weight: 500;
+    font-style: italic;
+    font-family: var(--font-editorial);
+  }
+
+  .hero-description {
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    line-height: 1.65;
+    color: var(--color-text-body);
+    margin-bottom: 2rem;
+    max-width: 580px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .hero-pills {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .pill-dot {
+    color: var(--color-gold);
+    font-size: 0.65rem;
+  }
+
+  .hero-visual-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 1rem;
+    height: 520px;
+  }
+
+  .grid-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  .grid-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #201f1d;
+  }
+
+  .card-large { height: 100%; }
+  .card-small { height: 50%; }
+
+  .grid-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .grid-card:hover img {
+    transform: scale(1.04);
+  }
+
+  .card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(24, 22, 18, 0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .caption-tag {
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  .caption-sub {
+    font-size: 0.75rem;
+    color: var(--color-gold);
+  }
+
+  /* Ballrooms Grid */
+  .ballrooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .ballroom-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ballroom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+  }
+
+  .card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--color-bg-dark);
+    color: var(--color-bg-linen);
+    font-family: var(--font-accent);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .is-upcoming .card-tag {
+    background-color: var(--color-gold);
+    color: #ffffff;
+  }
+
+  .card-body {
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .ballroom-title {
+    font-size: 1.45rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .ballroom-desc {
+    font-size: 0.925rem;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .ballroom-specs {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.85rem 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+  }
+
+  .spec-label {
+    font-family: var(--font-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .spec-value {
+    color: var(--color-text-dark);
+    font-weight: 600;
+  }
+
+  .spec-best-for {
+    color: var(--color-gold);
+  }
+
+  .card-footer {
+    margin-top: auto;
+  }
+
+  .w-100 { width: 100%; text-align: center; }
+
+  /* Events Cards Grid */
+  .events-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .spanish-event-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .spanish-event-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .spanish-event-card img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .s-event-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .s-event-body h3 {
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .s-event-body p {
+    font-size: 0.875rem;
+    color: var(--color-text-body);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .s-event-link {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .s-event-link:hover {
+    color: var(--color-gold);
+  }
+
+  /* FAQs */
+  .faq-list {
+    max-width: 800px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-accent);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    list-style: none;
+  }
+
+  .faq-arrow {
+    color: var(--color-gold);
+    font-size: 1.25rem;
+  }
+
+  .faq-answer {
+    margin-top: 1rem;
+    color: var(--color-text-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .mt-4 { margin-top: 2.5rem; }
+
+  @media (max-width: 1024px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .ballrooms-grid { grid-template-columns: 1fr; max-width: 580px; margin-left: auto; margin-right: auto; }
+    .events-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .events-cards-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { width: 100%; text-align: center; }
+    .hero-visual-grid { grid-template-columns: 1fr; height: auto; }
+    .card-large { height: 260px; }
+    .side-col { display: grid; grid-template-columns: 1fr 1fr; height: 160px; }
+  }
+</style>

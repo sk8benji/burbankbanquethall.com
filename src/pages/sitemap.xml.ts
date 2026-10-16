@@ -10,7 +10,8 @@ export const GET: APIRoute = async () => {
     { url: '/sweet-sixteen', changefreq: 'weekly', priority: '0.9' },
     { url: '/pricing-request', changefreq: 'monthly', priority: '0.9' },
     { url: '/gallery', changefreq: 'monthly', priority: '0.8' },
-    { url: '/contact', changefreq: 'monthly', priority: '0.8' }
+    { url: '/contact', changefreq: 'monthly', priority: '0.8' },
+    { url: '/espanol', changefreq: 'weekly', priority: '0.9' }
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
