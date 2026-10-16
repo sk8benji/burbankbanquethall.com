@@ -175,7 +175,7 @@ export const keyServices: VenueService[] = [
     description: "Celebrate the cherished transition into young womanhood with a royal quinceañera in Burbank. Our ballrooms provide the grandeur required for the grand entrance, father-daughter waltz, and an unforgettable fiesta.",
     capacity: "Up to 340 Guests",
     highlights: ["Royal Entrance & Court of Honor Staging", "Custom Color-Coded LED Uplighting", "Traditional & Contemporary Hispanic Catering", "Bilingual Event Coordinators & Staff"],
-    image: "/images/venue/burbank-hall-lighting-party-4.jpg"
+    image: "/images/venue/burbank-hall-quinceanera-13.jpg"
   },
   {
     slug: "sweet-sixteen",
@@ -299,8 +299,8 @@ export const galleryImages = [
     span: "col-span-1 row-span-1"
   },
   {
-    url: "/images/venue/burbank-hall-lighting-party-4.jpg",
-    alt: "Vibrant party dance floor and ambient lighting at Burbank Banquet Hall",
+    url: "/images/venue/burbank-hall-quinceanera-13.jpg",
+    alt: "Quinceañera celebration at Burbank Banquet Hall",
     span: "col-span-1 row-span-2"
   },
   {
