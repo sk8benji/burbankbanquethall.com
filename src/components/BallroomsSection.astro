@@ -1,5 +1,20 @@
 ---
-import { ballrooms, venueConfig } from '../data/venue-data';
+import { venueConfig } from '../data/venue-data';
+
+const venueImages = [
+  {
+    url: "/images/venue/burbank-hall-stage-screen-6.jpg",
+    alt: "The Grand Stage with Crystal Chandeliers & Screen at Burbank Banquet Hall"
+  },
+  {
+    url: "/images/venue/burbank-hall-modern-ballroom-12.jpg",
+    alt: "Stunning Ballroom Stage with Blue LED Lighting and Dance Floor"
+  },
+  {
+    url: "/images/venue/burbank-hall-interior-setup-5.jpg",
+    alt: "Formal Banquet Tables and Ceiling Architecture at Burbank Banquet Hall"
+  }
+];
 ---
 
 <section class="ballrooms-section section-padding" id="ballrooms">
@@ -13,60 +28,52 @@ import { ballrooms, venueConfig } from '../data/venue-data';
       </p>
     </div>
 
-    <!-- Ballrooms Grid -->
-    <div class="ballrooms-grid">
-      {ballrooms.map((ballroom) => (
-        <article class={`ballroom-card ${ballroom.isUpcoming ? 'is-upcoming' : ''}`}>
-          <div class="card-image-wrap">
-            <img src={ballroom.image} alt={ballroom.name} loading="lazy" />
-            <span class="card-tag">{ballroom.tag}</span>
+    <!-- Venue Showcase Card -->
+    <div class="venue-showcase-card">
+      <!-- 3 Images Grid -->
+      <div class="venue-images-grid">
+        {venueImages.map((img) => (
+          <div class="venue-img-wrap">
+            <img src={img.url} alt={img.alt} loading="lazy" />
           </div>
+        ))}
+      </div>
 
-          <div class="card-body">
-            <h3 class="ballroom-title">{ballroom.name}</h3>
-            <p class="ballroom-desc">{ballroom.description}</p>
+      <!-- Content Below the 3 Images -->
+      <div class="venue-card-body">
+        <p class="venue-desc">
+          From captivating crystal aesthetics and enthralling lighting to renowned in-house catering and individualized attention — every detail crafted for an unparalleled sensory journey in Burbank. Designed for memories that last a lifetime.
+        </p>
 
-            <!-- Specs Grid -->
-            <div class="ballroom-specs">
-              <div class="spec-row">
-                <span class="spec-label">Capacity</span>
-                <span class="spec-value">{ballroom.capacity}</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Style</span>
-                <span class="spec-value">{ballroom.style}</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Best for</span>
-                <span class="spec-value spec-best-for">
-                  {ballroom.bestFor.slice(0, 3).join(', ')}
-                </span>
-              </div>
-            </div>
-
-            <!-- Features Bullet List -->
-            <ul class="features-list">
-              {ballroom.features.map((feature) => (
-                <li class="feature-item">
-                  <span class="check-icon">✓</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <!-- CTA -->
-            <div class="card-footer">
-              <a 
-                href="#availability-modal" 
-                class={`btn ${ballroom.isUpcoming ? 'btn-outline' : 'btn-primary'} w-100 open-modal-trigger`}
-                data-ballroom={ballroom.name}
-              >
-                <span>{ballroom.ctaText}</span>
-              </a>
-            </div>
+        <!-- Specs Grid -->
+        <div class="venue-specs">
+          <div class="spec-row">
+            <span class="spec-label">Capacity</span>
+            <span class="spec-value">From 150 to 250 Guests</span>
           </div>
-        </article>
-      ))}
+          <div class="spec-row">
+            <span class="spec-label">Style</span>
+            <span class="spec-value">Elegant</span>
+          </div>
+          <div class="spec-row spec-best-for-row">
+            <span class="spec-label">Best for</span>
+            <span class="spec-value spec-best-for">
+              Weddings, Quinceañeras, Sweet Sixteen, Birthday Parties, Ceremonies, Cocktail Hours, Engagement Parties, and more
+            </span>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="venue-cta-wrap text-center">
+          <a 
+            href="#availability-modal" 
+            class="btn btn-primary open-modal-trigger"
+            data-ballroom="Burbank Banquet Hall"
+          >
+            <span>Check Availability</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Location Banner Serving Burbank & LA -->
@@ -105,154 +112,102 @@ import { ballrooms, venueConfig } from '../data/venue-data';
   }
 
   .section-header {
-    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    margin-bottom: clamp(2.5rem, 4.5vw, 4rem);
   }
 
-  /* Ballrooms Grid */
-  .ballrooms-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4.5rem;
-  }
-
-  .ballroom-card {
+  /* Venue Showcase Card */
+  .venue-showcase-card {
     background: #ffffff;
     border: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 4.5rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
   }
 
-  .ballroom-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  .venue-images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding: 1.25rem 1.25rem 0 1.25rem;
   }
 
-  .card-image-wrap {
+  .venue-img-wrap {
     position: relative;
-    height: 240px;
+    height: 280px;
     overflow: hidden;
     background-color: #201f1d;
   }
 
-  .card-image-wrap img {
+  .venue-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
   }
 
-  .ballroom-card:hover .card-image-wrap img {
+  .venue-img-wrap:hover img {
     transform: scale(1.05);
   }
 
-  .card-tag {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: var(--color-bg-dark);
-    color: var(--color-bg-linen);
-    font-family: var(--font-accent);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
+  /* Venue Card Body */
+  .venue-card-body {
+    padding: 2.75rem clamp(1.5rem, 4vw, 3.5rem);
   }
 
-  .is-upcoming .card-tag {
-    background-color: var(--color-gold);
-    color: #ffffff;
-  }
-
-  .card-body {
-    padding: 2rem 1.75rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .ballroom-title {
-    font-size: 1.5rem;
-    color: var(--color-text-dark);
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
-
-  .ballroom-desc {
-    font-size: 0.9375rem;
+  .venue-desc {
+    font-size: 1.1rem;
     color: var(--color-text-body);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 0;
+    line-height: 1.75;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 2.25rem auto;
   }
 
-  .ballroom-specs {
+  .venue-specs {
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
-    padding: 1rem 0;
-    margin-bottom: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
+    padding: 1.5rem 0;
+    margin-bottom: 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
   }
 
   .spec-row {
     display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
   .spec-label {
     font-family: var(--font-accent);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--color-text-muted);
   }
 
   .spec-value {
     color: var(--color-text-dark);
     font-weight: 600;
+    font-size: 1rem;
   }
 
   .spec-best-for {
-    text-align: right;
-    max-width: 60%;
     color: var(--color-gold);
+    line-height: 1.55;
+    font-size: 0.95rem;
   }
 
-  .features-list {
-    list-style: none;
-    margin-bottom: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
+  .venue-cta-wrap {
+    margin-top: 0.5rem;
   }
 
-  .feature-item {
-    font-size: 0.85rem;
-    color: var(--color-text-body);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .check-icon {
-    color: var(--color-gold);
-    font-weight: bold;
-    font-size: 0.8rem;
-  }
-
-  .card-footer {
-    margin-top: auto;
-  }
-
-  .w-100 {
-    width: 100%;
+  .venue-cta-wrap .btn {
+    padding: 0.95rem 3rem;
+    font-size: 0.875rem;
   }
 
   /* Service Area Banner */
@@ -301,12 +256,16 @@ import { ballrooms, venueConfig } from '../data/venue-data';
     flex-wrap: wrap;
   }
 
-  @media (max-width: 1024px) {
-    .ballrooms-grid {
+  @media (max-width: 900px) {
+    .venue-images-grid {
       grid-template-columns: 1fr;
-      max-width: 580px;
-      margin-left: auto;
-      margin-right: auto;
+    }
+    .venue-img-wrap {
+      height: 220px;
+    }
+    .venue-specs {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
   }
 </style>
