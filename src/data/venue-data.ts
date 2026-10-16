@@ -110,7 +110,7 @@ export const ballrooms: Ballroom[] = [
       "Integrated Multimedia & Projection Screens",
       "Customizable Cocktail Bar Area"
     ],
-    image: "/images/venue/burbank-hall-chandeliers-tables-8.jpg",
+    image: "/images/venue/burbank-hall-modern-ballroom-12.jpg",
     ctaText: "Check Availability"
   },
   {
